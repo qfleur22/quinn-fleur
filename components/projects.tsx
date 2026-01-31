@@ -50,7 +50,7 @@ export const Projects = () => {
       name: 'DBT Coping Skills',
       description: 'Interactive web application helping users learn and practice Dialectical Behavior Therapy coping techniques for emotional regulation. Currently in development - not yet released.',
       image: '/projects/dbt-skills.png',
-      url: 'https://quinnfleur.com/coping-skills',
+      url: 'https://dbt.quinnfleur.com/',
       stats: {
         label1: 'Visitors',
         value1: 'N/A',
