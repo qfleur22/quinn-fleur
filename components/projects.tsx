@@ -72,6 +72,32 @@ export const Projects = () => {
         'Accessibility Standards',
       ],
     },
+    {
+      name: 'Daily Journal',
+      description: 'Comprehensive wellness tracking application for daily mental health and physical wellness monitoring. Features interactive check-ins, schedule management, and historical data tracking with local storage.',
+      image: '/projects/daily-journal.png',
+      url: 'https://quinnfleur.com/daily-journal',
+      stats: {
+        label1: 'Status',
+        value1: 'In Development',
+        label2: 'Data Tracking',
+        value2: '15+ Metrics',
+      },
+      technologies: [
+        'React',
+        'TypeScript',
+        'Local Storage API',
+        'Tailwind CSS',
+        'Date Management',
+      ],
+      skills: [
+        'Health Tech Development',
+        'Data Visualization',
+        'State Management',
+        'Wellness Tracking Systems',
+        'Intuitive Form Design',
+      ],
+    },
   ]
 
   return (
@@ -85,7 +111,7 @@ export const Projects = () => {
           meaningful and impactful digital experiences.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project) => (
             <div
               key={project.name}
