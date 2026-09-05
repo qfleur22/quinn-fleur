@@ -16,17 +16,84 @@ body {
   .text-gradient {
     @apply bg-gradient-to-r from-neon-green via-neon-cyan to-neon-blue bg-clip-text text-transparent;
   }
-  
+
   .neon-glow {
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
   }
-  
+
   .card-hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .card-hover:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 255, 159, 0.3);
+  }
+}
+
+@layer components {
+  .wall-paper {
+    background-color: #e8dcc8;
+    background-image:
+      radial-gradient(rgba(133, 106, 93, 0.09) 0.7px, transparent 0.7px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 38%);
+    background-size: 5px 5px, 100% 100%;
+  }
+
+  .wood-shelf {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(60, 40, 30, 0.12) 0px,
+        rgba(60, 40, 30, 0.12) 1px,
+        transparent 1px,
+        transparent 26px
+      ),
+      linear-gradient(180deg, #b08d7a 0%, #856a5d 42%, #6a5348 78%, #5a463d 100%);
+    box-shadow:
+      0 10px 18px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .wood-floor {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        #6b5344 0px,
+        #6b5344 48px,
+        #5c4639 48px,
+        #5c4639 50px,
+        #745a4a 50px,
+        #745a4a 96px,
+        #5c4639 96px,
+        #5c4639 98px
+      );
+    background-size: 98px 100%;
+  }
+
+  .book-spine-title {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.18em;
+  }
+
+  .ornate-gold {
+    background:
+      linear-gradient(135deg, #ffe7a3 0%, #ffc857 28%, #e0a63a 52%, #ffc857 76%, #f6d27a 100%);
+    box-shadow:
+      0 0 0 3px #6b4f1d,
+      0 0 0 7px #ffc857,
+      0 0 0 9px #856a5d,
+      0 12px 28px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-smoke-wisp,
+  .animate-flicker,
+  .animate-leaf-sway,
+  .animate-glow {
+    animation: none !important;
   }
 }

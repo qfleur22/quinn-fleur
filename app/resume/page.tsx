@@ -96,12 +96,6 @@ const ResumeContent = () => {
 
   const community = [
     {
-      organization: 'T4Tclt',
-      role: 'Lead Organizer',
-      period: 'November 2023 - Present',
-      description: 'Facilitate creating trans centered spaces and resources in Charlotte, including multiple recurring events',
-    },
-    {
       organization: 'Feed the Movement',
       role: 'Organizer',
       period: 'March 2020 - Present',
