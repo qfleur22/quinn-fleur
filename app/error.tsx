@@ -42,7 +42,7 @@ export default function Error({
         </h2>
         
         <p className="text-lg text-white/70 mb-8">
-          We encountered an unexpected error. Don't worry, it's not your fault!
+          Something unexpected happened. Don&apos;t worry, it&apos;s not your fault!
         </p>
 
         {error.digest && (

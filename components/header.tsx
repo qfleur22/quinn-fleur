@@ -8,9 +8,10 @@ export const Header = () => {
 
   const navItems = [
     { label: 'Home', href: '/' },
+    { label: 'Portfolio', href: '/portfolio' },
     { label: 'Resume', href: '/resume' },
-    { label: 'Projects', href: '/#projects' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Projects', href: '/portfolio#projects' },
+    { label: 'Contact', href: '/about#contact' },
   ]
 
   return (
@@ -18,7 +19,7 @@ export const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <a 
-            href="#home" 
+            href="/portfolio#home" 
             className="text-2xl font-bold text-gradient hover:opacity-80 transition-opacity"
           >
             Quinn Fleur
