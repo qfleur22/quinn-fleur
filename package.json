@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postinstall": "npx update-browserslist-db@latest --quiet || true",
     "start": "next start",
     "lint": "next lint",
     "pages:build": "next build",
@@ -13,6 +12,8 @@
     "deploy": "npm run build && npm run pages:deploy"
   },
   "dependencies": {
+    "browserslist": "^4.28.9",
+    "caniuse-lite": "^1.0.30001810",
     "lucide-react": "^0.469.0",
     "next": "15.5.7",
     "react": "^19.0.0",
