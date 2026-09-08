@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const COACHING_HREF = '/about#contact'
-const WORKSHOP_HREF = '/care-plan-workshop'
+const WORKSHOP_HREF = '/resources/care-plan-workshop'
 const DIY_LABEL = 'Get the Care Plan Guide + Blank Template →'
 
 const guideSkills = [

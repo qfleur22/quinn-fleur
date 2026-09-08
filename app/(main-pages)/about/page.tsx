@@ -33,7 +33,7 @@ export default function AboutPage() {
         </p>
         <p>
           My aesthetic is solar-punk whimsy witch. I like gaming,{' '}
-          <RoomLink href="/anime">anime</RoomLink>, researching and collecting{' '}
+          <RoomLink href="/resources/anime">anime</RoomLink>, researching and collecting{' '}
           <RoomLink href="/resources">resources</RoomLink>, science fiction, and working on my
           battle jackets.
         </p>

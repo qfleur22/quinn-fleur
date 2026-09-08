@@ -1,25 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter, Fraunces, Caveat, Cormorant_Garamond } from 'next/font/google'
+import { bodyFontClassName } from '@/app/fonts'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-})
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  variable: '--font-caveat',
-})
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -41,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${fraunces.variable} ${caveat.variable} ${cormorant.variable}`}>
+      <body className={bodyFontClassName}>
         {children}
       </body>
     </html>

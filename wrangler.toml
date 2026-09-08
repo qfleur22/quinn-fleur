@@ -1,3 +1,9 @@
+# Static Next.js export for Cloudflare Pages.
+# Dashboard settings:
+#   Build command:  npm run build   (or: bash build.sh)
+#   Output dir:     out
+# Do NOT use: npx opennextjs-cloudflare build (requires standalone, not static export)
+
 name = "quinn-fleur-portfolio"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "out"

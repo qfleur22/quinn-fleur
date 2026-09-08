@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const COACHING_HREF = '/about#contact'
-const INDIVIDUAL_HREF = '/care-plan'
+const INDIVIDUAL_HREF = '/resources/care-plan'
 const KIT_LABEL = 'Get the Care Plan Creation Workshop Kit →'
 
 const communityItems = [
@@ -891,7 +891,7 @@ export default function CarePlanWorkshopPage() {
         <p className="text-center">
           <RoomLink href="/store">Back to the store</RoomLink>
           {' · '}
-          <RoomLink href="/care-plan">The individual Care Plan</RoomLink>
+          <RoomLink href="/resources/care-plan">The individual Care Plan</RoomLink>
         </p>
       </WallCard>
     </RoomPage>

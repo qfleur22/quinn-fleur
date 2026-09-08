@@ -118,26 +118,17 @@ const isBookActive = ({
   }
 
   if (book.href === '/store') {
-    return (
-      pathname === '/store' ||
-      pathname.startsWith('/store/') ||
-      pathname === '/transition' ||
-      pathname === '/binder' ||
-      pathname === '/anime' ||
-      pathname === '/anime-panel' ||
-      pathname === '/care-plan' ||
-      pathname === '/care-plan-workshop'
-    )
+    return pathname === '/store' || pathname.startsWith('/store/') || pathname === '/transition'
   }
 
-  if (book.href === '/resources' && pathname === '/charlotte') {
-    return true
+  if (book.href === '/resources') {
+    return pathname === '/resources' || pathname.startsWith('/resources/')
   }
 
   return pathname === book.href
 }
 
-export const Bookshelf = () => {
+export const Bookshelf = ({ sticky = true }: { sticky?: boolean }) => {
   const pathname = usePathname()
   const [hash, setHash] = useState('')
 
@@ -180,7 +171,7 @@ export const Bookshelf = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className={sticky ? 'sticky top-0 z-50' : 'z-50'}>
       <div className="wall-paper">
         <nav
           aria-label="Bookshelf"

@@ -542,7 +542,7 @@ export default function AnimePanelPage() {
         <p className="text-center">
           <RoomLink href="/store">Back to the store</RoomLink>
           {' · '}
-          <RoomLink href="/anime">The anime guide</RoomLink>
+          <RoomLink href="/resources/anime">The anime guide</RoomLink>
         </p>
       </WallCard>
     </RoomPage>

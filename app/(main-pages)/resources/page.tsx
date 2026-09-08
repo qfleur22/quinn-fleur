@@ -23,12 +23,12 @@ const groups: ResourceGroup[] = [
   {
     id: 'charlotte',
     title: 'Charlotte things',
-    href: '/charlotte',
+    href: '/resources/charlotte',
     cta: '→',
     items: [
       {
         name: 'Charlotte resource guide',
-        href: '/charlotte',
+        href: '/resources/charlotte',
         description:
           'Healthcare, food, housing, clothing, funding, social groups, friendly shops, and more — gathered in one room for folks in Charlotte.',
       },
@@ -72,7 +72,7 @@ const groups: ResourceGroup[] = [
       },
       {
         name: 'How to create a medical binder',
-        href: '/binder',
+        href: '/resources/binder',
         description:
           'A system for turning a scattered medical history into something you can actually use at appointments.',
       },

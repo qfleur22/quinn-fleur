@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const DATABASE =
   'https://docs.google.com/spreadsheets/d/1RAGFgfxsFJCaiNvmvz7g1qVpm3gXo6Em_gMJOZppL64/edit'
 const COACHING_HREF = '/about#contact'
-const PANEL_HREF = '/anime-panel'
+const PANEL_HREF = '/resources/anime-panel'
 
 const audienceItems = [
   'You’re trans and looking for anime that actually sees you',

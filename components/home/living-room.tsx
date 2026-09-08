@@ -1,35 +1,53 @@
-export const LivingRoom = () => {
+export const LivingRoom = ({
+  compact = false,
+  showTagline = true,
+}: {
+  compact?: boolean
+  showTagline?: boolean
+}) => {
   return (
     <section className="relative overflow-x-hidden">
-      <div className="wood-floor relative px-2 pb-12 pt-16 sm:px-4 sm:pt-24">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-room-wall to-transparent" />
+      <div
+        className={`wood-floor relative px-2 sm:px-4 ${
+          compact ? 'pb-2 pt-1' : 'pb-12 pt-16 sm:pt-24'
+        }`}
+      >
+        <div
+          className={`pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-room-wall to-transparent ${
+            compact ? 'h-6' : 'h-20'
+          }`}
+        />
 
         <div className="relative mx-auto flex w-full max-w-5xl items-end justify-center">
-          <SideTable side="left" />
+          {!compact ? <SideTable side="left" /> : null}
 
-          <div className="relative min-w-0 flex-[2] px-1 sm:px-3">
-            <CouchIllustration />
-            <div className="absolute bottom-[7%] left-1/2 z-20 w-56 -translate-x-1/2 sm:w-72">
-              <GoldTable />
-            </div>
+          <div className={`relative min-w-0 ${compact ? 'w-full max-w-2xl px-2' : 'flex-[2] px-1 sm:px-3'}`}>
+            <CouchIllustration compact={compact} />
+            {!compact ? (
+              <div className="absolute bottom-[7%] left-1/2 z-20 w-56 -translate-x-1/2 sm:w-72">
+                <GoldTable />
+              </div>
+            ) : null}
           </div>
 
-          <SideTable side="right" />
+          {!compact ? <SideTable side="right" /> : null}
         </div>
 
-        <p className="relative z-10 mt-8 text-center font-script text-3xl text-room-gold drop-shadow sm:mt-10 sm:text-5xl">
-          thanks for visiting!
-        </p>
+        {showTagline && !compact ? (
+          <p className="relative z-10 mt-8 text-center font-script text-3xl text-room-gold drop-shadow sm:mt-10 sm:text-5xl">
+            thanks for visiting!
+          </p>
+        ) : null}
       </div>
     </section>
   )
 }
 
-const CouchIllustration = () => {
+const CouchIllustration = ({ compact = false }: { compact?: boolean }) => {
   return (
     <svg
       viewBox="0 0 1100 430"
-      className="w-full"
+      className={`w-full ${compact ? 'max-h-[7.5rem] sm:max-h-[9rem]' : ''}`}
       role="img"
       aria-label="A teal three-seater couch"
     >

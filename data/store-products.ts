@@ -22,7 +22,7 @@ export const storeProducts: StoreProduct[] = [
     name: 'Trans+ Representation in Anime',
     summary:
       'Explore the characters, stories, history, and wonderfully complicated relationship between anime and gender.',
-    href: '/anime',
+    href: '/resources/anime',
     tagline: 'a guide, a database, a panel',
   },
   {
@@ -30,7 +30,7 @@ export const storeProducts: StoreProduct[] = [
     name: 'Trans Representation in Anime Panel Kit',
     summary:
       'A ready-to-present panel kit with the PowerPoint, presenter notes, and research spreadsheet already built.',
-    href: '/anime-panel',
+    href: '/resources/anime-panel',
     tagline: 'slides, notes, research',
   },
   {
@@ -38,7 +38,7 @@ export const storeProducts: StoreProduct[] = [
     name: 'How to Create a Medical Binder',
     summary:
       'Build a medical binder that helps you explain years of symptoms, diagnoses, medications, testing, and treatment.',
-    href: '/binder',
+    href: '/resources/binder',
     tagline: 'your history, in one place',
   },
   {
@@ -46,7 +46,7 @@ export const storeProducts: StoreProduct[] = [
     name: 'How to Make a Care Plan',
     summary:
       'A practical care-plan system for neurodivergence, chronic illness, disability, mental health, overwhelm, and everyday support.',
-    href: '/care-plan',
+    href: '/resources/care-plan',
     tagline: 'a manual for being you',
   },
   {
@@ -54,7 +54,7 @@ export const storeProducts: StoreProduct[] = [
     name: 'Care Plan Creation Workshop Kit',
     summary:
       'A ready-to-facilitate workshop so your community can make care plans—curriculum, prompts, and facilitation structure included.',
-    href: '/care-plan-workshop',
+    href: '/resources/care-plan-workshop',
     tagline: 'ready to facilitate',
   },
 ]
