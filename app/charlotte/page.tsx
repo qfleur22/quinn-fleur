@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import { RoomPage, WallCard } from '@/components/home/room-page'
 import { GuideCta } from '@/components/home/guide-cta'
+import {
+  CompleteDirectory,
+  ResourceListing,
+  TopicHeading,
+} from '@/components/home/charlotte-guide'
+import { charlotteGroups } from '@/data/charlotte-resources'
 
 export const metadata: Metadata = {
   title: 'Resources in Charlotte & North Carolina',
@@ -46,18 +52,103 @@ const linkMap: Record<string, { href: string; isDominant?: boolean }> = {
 }
 
 const sectionIdByHeading: Record<string, string> = {
-  'Changing Your Name in North Carolina?': 'name-change',
+  'Start Here': 'start-here',
   'Need Food?': 'food',
+  'Need Trans-Friendly Healthcare?': 'healthcare',
+  'Need Help Paying for Transition?': 'transition-funding',
+  'Trans Youth & Families in North Carolina': 'trans-youth',
+  'Changing Your Name in North Carolina?': 'name-change',
+  'Free Name Change Help': 'name-change-help',
   'Need Rent or Utility Help?': 'rent-utility',
   'Need Free Clothing or Household Items?': 'clothing',
   'LGBTQ+ Youth & Young Adults': 'youth',
   'Reproductive Healthcare & Abortion Support': 'reproductive-health',
+  'HIV Testing, Prevention & Support': 'hiv',
   'Harm Reduction': 'harm-reduction',
   'Disability Resources': 'disability-accessibility',
+  'Need Money for Something That Isn’t Healthcare?': 'funding',
   'I Just Want Queer Friends': 'queer-community',
   'Looking for a Trans-Friendly Business?': 'friendly-businesses',
+  'Looking for Gender-Affirming Care Providers?': 'providers',
+  'National Resources Worth Knowing About': 'national',
   'Books, Guides & “I Want to Learn More”': 'books-guides',
 }
+
+const directoryHeadingIds = new Set([
+  'food',
+  'healthcare',
+  'transition-funding',
+  'trans-youth',
+  'name-change',
+  'rent-utility',
+  'clothing',
+  'youth',
+  'reproductive-health',
+  'hiv',
+  'harm-reduction',
+  'disability-accessibility',
+  'funding',
+  'queer-community',
+  'friendly-businesses',
+  'providers',
+  'national',
+  'books-guides',
+])
+
+const directoryTopics = Object.entries(sectionIdByHeading)
+  .filter(([, id]) => {
+    return directoryHeadingIds.has(id)
+  })
+  .map(([label, id]) => ({ label, id }))
+
+const extraResourceLinks: Record<string, string> = {
+  'NC 211': 'https://nc211.org/',
+  'Charlotte Trans Health PATH':
+    'https://charlottetranshealth.org/providing-access-to-trans-healthcare-path/',
+  'Crisis Assistance Ministry Free Store': 'https://www.crisisassistance.org/',
+  'Youth Crisis Center': 'https://www.therelatives.org/',
+  'On Ramp Resource Center': 'https://www.therelatives.org/',
+  Housing: 'https://www.therelatives.org/',
+  'Charlotte Trans Health + Carolinas LGBT+ Chamber': 'https://charlottetranshealth.org/',
+  'Charlotte Food Pantry & Free Food Guide': '/charlotte#food',
+  'North Carolina Name Change Guide': '/charlotte#name-change',
+  'The Complete Charlotte / NC Resource Guide': '/charlotte#complete-directory',
+}
+
+const extraResourceNames = [
+  'T4TCLT',
+  'Queer Clothing Swaps',
+  'North Carolina Bar Foundation LGBTQ+ Legal Clinics',
+  'Transition Funding',
+  'Southern Trans Resources',
+  'Youth Support',
+  'Gender-Affirming Clothing',
+  'Surgery Research',
+  'Coming Out',
+  'Trans Education',
+  'Mutual Aid',
+]
+
+const resourceLinks = new Map<string, string>()
+const resourceNames = new Set<string>()
+
+charlotteGroups.forEach((group) => {
+  group.items.forEach((item) => {
+    resourceNames.add(item.name)
+    if (item.href) {
+      resourceLinks.set(item.name, item.href)
+    }
+  })
+})
+
+Object.entries(extraResourceLinks).forEach(([name, href]) => {
+  resourceNames.add(name)
+  resourceLinks.set(name, href)
+})
+
+extraResourceNames.forEach((name) => {
+  resourceNames.add(name)
+})
 
 const CHARLOTTE_COPY = `
 Compiled by Quinn Fleur
@@ -969,49 +1060,144 @@ const normalizeBracketLabel = (raw: string) => {
   return raw.trim().replace(/→\s*$/, '').trim()
 }
 
+type CharlotteBlock =
+  | { type: 'directory' }
+  | { type: 'heading'; text: string; id?: string }
+  | { type: 'cta'; label: string; href: string; isDominant?: boolean }
+  | { type: 'resource'; name: string; href?: string; description: string[] }
+  | { type: 'paragraph'; text: string }
+
+const parseCharlotteBlocks = ({ paragraphs }: { paragraphs: string[] }) => {
+  const blocks: CharlotteBlock[] = []
+  const usedHeadingIds = new Set<string>()
+  let skipCompleteDirectoryCta = false
+  let index = 0
+
+  while (index < paragraphs.length) {
+    const paragraph = paragraphs[index].trim()
+    index += 1
+
+    if (!paragraph) {
+      continue
+    }
+
+    if (paragraph === '⸻') {
+      skipCompleteDirectoryCta = false
+      continue
+    }
+
+    if (paragraph === 'Looking for something specific?') {
+      blocks.push({ type: 'directory' })
+      skipCompleteDirectoryCta = true
+      continue
+    }
+
+    const bracketMatch = paragraph.match(/^\[(.+)\]$/)
+    if (bracketMatch) {
+      const label = normalizeBracketLabel(bracketMatch[1])
+      const mapped = linkMap[label]
+      if (mapped) {
+        if (skipCompleteDirectoryCta && mapped.href.includes('#complete-directory')) {
+          continue
+        }
+
+        blocks.push({
+          type: 'cta',
+          label,
+          href: mapped.href,
+          isDominant: mapped.isDominant,
+        })
+      }
+      continue
+    }
+
+    const headingId = sectionIdByHeading[paragraph]
+    if (headingId) {
+      let id: string | undefined
+      if (!usedHeadingIds.has(headingId)) {
+        usedHeadingIds.add(headingId)
+        id = headingId
+      }
+
+      blocks.push({ type: 'heading', text: paragraph, id })
+      continue
+    }
+
+    if (resourceNames.has(paragraph)) {
+      const description: string[] = []
+
+      while (index < paragraphs.length) {
+        const next = paragraphs[index].trim()
+        if (
+          !next ||
+          next === '⸻' ||
+          next.match(/^\[(.+)\]$/) ||
+          sectionIdByHeading[next] ||
+          resourceNames.has(next)
+        ) {
+          break
+        }
+
+        description.push(next)
+        index += 1
+      }
+
+      blocks.push({
+        type: 'resource',
+        name: paragraph,
+        href: resourceLinks.get(paragraph),
+        description,
+      })
+      continue
+    }
+
+    blocks.push({ type: 'paragraph', text: paragraph })
+  }
+
+  return blocks
+}
+
 export default function CharlottePage() {
   const paragraphs = CHARLOTTE_COPY.trim().split(/\n{2,}/)
+  const blocks = parseCharlotteBlocks({ paragraphs })
 
   return (
     <RoomPage>
       <WallCard title="Resources in Charlotte & North Carolina" wide="xl">
-        <div id="complete-directory" />
-        {paragraphs.map((rawParagraph, idx) => {
-          const paragraph = rawParagraph.trim()
-          if (!paragraph) return null
-
-          const bracketMatch = paragraph.match(/^\[(.+)\]$/)
-          if (bracketMatch) {
-            const label = normalizeBracketLabel(bracketMatch[1])
-            const mapped = linkMap[label]
-            if (mapped) {
-              return (
-                <GuideCta
-                  key={`${label}-${idx}`}
-                  href={mapped.href}
-                  label={`${label} →`}
-                  isDominant={mapped.isDominant}
-                />
-              )
-            }
+        {blocks.map((block, idx) => {
+          if (block.type === 'directory') {
+            return <CompleteDirectory key="complete-directory" topics={directoryTopics} />
           }
 
-          const headingId = sectionIdByHeading[paragraph]
-          if (headingId) {
+          if (block.type === 'heading') {
+            return <TopicHeading key={`${block.text}-${idx}`} text={block.text} id={block.id} />
+          }
+
+          if (block.type === 'cta') {
             return (
-              <h2
-                key={`${paragraph}-${idx}`}
-                id={headingId}
-                className="mt-8 font-display text-2xl text-room-teal sm:text-3xl"
-              >
-                {paragraph}
-              </h2>
+              <GuideCta
+                key={`${block.label}-${idx}`}
+                href={block.href}
+                label={`${block.label} →`}
+                isDominant={block.isDominant}
+              />
+            )
+          }
+
+          if (block.type === 'resource') {
+            return (
+              <ResourceListing
+                key={`${block.name}-${idx}`}
+                name={block.name}
+                href={block.href}
+                description={block.description}
+              />
             )
           }
 
           return (
             <p key={idx} className="whitespace-pre-wrap">
-              {paragraph}
+              {block.text}
             </p>
           )
         })}

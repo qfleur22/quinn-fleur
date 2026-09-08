@@ -184,7 +184,7 @@ export const Bookshelf = () => {
       <div className="wall-paper">
         <nav
           aria-label="Bookshelf"
-          className="mx-auto flex max-w-5xl items-end gap-1 px-2 pt-4 sm:gap-3 sm:px-8"
+          className="mx-auto flex max-w-6xl items-end gap-1 px-2 pt-4 sm:gap-3 sm:px-8"
         >
           <PothosPlant isActive={pathname === '/'} />
 

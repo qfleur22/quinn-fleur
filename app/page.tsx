@@ -4,8 +4,8 @@ import { GalleryWall } from '@/components/home/gallery-wall'
 import { LivingRoom } from '@/components/home/living-room'
 
 export const metadata: Metadata = {
-  title: 'Quinn Fleur',
-  description: 'Make yourself at home — a little corner of the internet from Quinn Fleur.',
+  description:
+    'Resources, tools, and peer coaching by Quinn Fleur for people living at the intersections of transness, neurodivergence, disability, hypermobility, and chronic illness.',
 }
 
 export default function Home() {

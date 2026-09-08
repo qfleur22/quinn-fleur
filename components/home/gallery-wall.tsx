@@ -4,7 +4,7 @@ import { GalleryPiece } from '@/models/gallery-piece'
 const pieces: GalleryPiece[] = [
   {
     id: 'about',
-    title: 'About me',
+    title: 'About',
     imageSrc: '/gallery/quinn-portrait.png',
     imageAlt: 'Portrait of Quinn Fleur',
     href: '/about',
@@ -60,13 +60,18 @@ export const GalleryWall = () => {
   return (
     <section className="relative px-4 py-12 sm:px-8 sm:py-20">
       <div className="mb-12 text-center sm:mb-16">
-        <h1 className="font-script text-5xl text-room-teal sm:text-7xl">Quinn Fleur</h1>
-        <p className="mt-2 font-gallery text-lg italic text-room-brown sm:text-xl">
+        <h1 className="mx-auto max-w-6xl px-2 font-script text-4xl leading-tight text-room-teal sm:text-6xl lg:text-7xl">
+          The Neuroqueer Apothecary
+        </h1>
+        <p className="mt-3 font-gallery text-lg italic text-room-brown sm:text-xl">
+          founded by Quinn Fleur
+        </p>
+        <p className="mt-1 font-gallery text-base text-room-brown/80 sm:text-lg">
           make yourself at home
         </p>
       </div>
 
-      <div className="mx-auto flex max-w-5xl flex-wrap items-end justify-center gap-8 sm:gap-12">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-center gap-8 sm:gap-12">
         {pieces.map((piece) => (
           <OrnateFrame
             key={piece.id}

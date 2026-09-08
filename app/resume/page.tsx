@@ -111,7 +111,7 @@ const ResumeContent = () => {
 
   return (
     <div className="py-12 bg-black">
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">

@@ -5,7 +5,8 @@ import { ResourceGroup } from '@/models/resource-group'
 
 export const metadata: Metadata = {
   title: 'Resources',
-  description: 'Herbalism, disability, trans, and Charlotte resources I like to keep on the shelf.',
+  description:
+    'Herbalism, disability, trans, and Charlotte resources from the Neuroqueer Apothecary.',
 }
 
 const groups: ResourceGroup[] = [
@@ -84,7 +85,7 @@ export default function ResourcesPage() {
   return (
     <RoomPage>
       <WallCard title="Resources" wide>
-        <p>A handful of guides and notes I like to keep on the shelf.</p>
+        <p>A handful of guides and notes from the Neuroqueer Apothecary.</p>
         <ResourceSections groups={groups} />
       </WallCard>
     </RoomPage>

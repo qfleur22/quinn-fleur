@@ -20,10 +20,10 @@ export const WallCard = ({
   children: React.ReactNode
   wide?: boolean | 'xl'
 }) => {
-  const widthClass = wide === 'xl' ? 'max-w-4xl' : wide ? 'max-w-3xl' : 'max-w-2xl'
+  const widthClass = wide === 'xl' ? 'max-w-6xl' : wide ? 'max-w-5xl' : 'max-w-4xl'
 
   return (
-    <article className={`mx-auto px-4 py-14 sm:px-6 ${widthClass}`}>
+    <article className={`mx-auto px-4 py-14 sm:px-8 ${widthClass}`}>
       <div className="ornate-gold p-3">
         <div className="bg-[#f7f0e6] px-6 py-8 sm:px-10 sm:py-10">
           <h1 className="mb-6 font-display text-4xl text-room-teal sm:text-5xl">{title}</h1>

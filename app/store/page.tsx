@@ -6,7 +6,7 @@ import { storeProducts } from '@/data/store-products'
 
 export const metadata: Metadata = {
   title: 'Store',
-  description: 'Guides and offerings from Quinn Fleur.',
+  description: 'Guides and offerings from the Neuroqueer Apothecary, founded by Quinn Fleur.',
 }
 
 export default function StorePage() {
@@ -14,7 +14,7 @@ export default function StorePage() {
     <RoomPage>
       <WallCard title="Store" wide>
         <p>
-          A few things I&apos;ve made — take what helps, leave the rest on the shelf.
+          Guides from the Neuroqueer Apothecary — take what helps, leave the rest on the shelf.
         </p>
         <ul className="grid gap-10 sm:grid-cols-2">
           {storeProducts.map((product) => (

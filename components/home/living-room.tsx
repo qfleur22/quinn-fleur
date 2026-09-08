@@ -4,7 +4,7 @@ export const LivingRoom = () => {
       <div className="wood-floor relative px-2 pb-12 pt-16 sm:px-4 sm:pt-24">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-room-wall to-transparent" />
 
-        <div className="relative mx-auto flex w-full max-w-5xl items-end justify-center">
+        <div className="relative mx-auto flex w-full max-w-6xl items-end justify-center">
           <SideTable side="left" />
 
           <div className="relative min-w-0 flex-[2] px-1 sm:px-3">
@@ -18,7 +18,7 @@ export const LivingRoom = () => {
         </div>
 
         <p className="relative z-10 mt-8 text-center font-script text-3xl text-room-gold drop-shadow sm:mt-10 sm:text-5xl">
-          thanks for visiting!
+          thanks for visiting the apothecary!
         </p>
       </div>
     </section>

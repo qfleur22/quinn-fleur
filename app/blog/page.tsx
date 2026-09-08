@@ -3,7 +3,7 @@ import { RoomPage, WallCard } from '@/components/home/room-page'
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Writing from Quinn Fleur — coming soon.',
+  description: 'Writing from the Neuroqueer Apothecary — coming soon.',
 }
 
 export default function BlogPage() {

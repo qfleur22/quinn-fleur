@@ -23,13 +23,15 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Quinn Fleur',
-    template: '%s · Quinn Fleur',
+    default: 'The Neuroqueer Apothecary',
+    template: '%s · The Neuroqueer Apothecary',
   },
-  description: 'Make yourself at home — a little corner of the internet from Quinn Fleur.',
+  description:
+    'Resources, tools, and peer coaching by Quinn Fleur for people living at the intersections of transness, neurodivergence, disability, hypermobility, and chronic illness.',
   openGraph: {
-    title: 'Quinn Fleur',
-    description: 'Make yourself at home — a little corner of the internet from Quinn Fleur.',
+    title: 'The Neuroqueer Apothecary',
+    description:
+      'Resources, tools, and peer coaching by Quinn Fleur for people living at the intersections of transness, neurodivergence, disability, hypermobility, and chronic illness.',
     type: 'website',
   },
 }
